@@ -9,6 +9,7 @@ const cn: any = {
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_DATABASE,
+  ssl: true,
 };
 
 export const db: IDatabase<any> = pgp(cn);
