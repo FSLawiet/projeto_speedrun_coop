@@ -62,7 +62,7 @@ export const Signup = () => {
         <input
           type="text"
           className="form-input"
-          {...register("username")}
+          {...register("userName")}
           required
         />
       </div>

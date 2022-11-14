@@ -105,7 +105,6 @@
  *                 $ref: '#/components/schemas/Error'
  *
  */
-
 import { Express, Request, Response } from "express";
 import {
   getUsuarios,
@@ -128,15 +127,9 @@ export const usuarioRoute = (server: Express) => {
     .post(async (req: Request, res: Response) => {
       const { firstName, lastName, userName, email, pwd } = req.body;
       try {
-        const resp = await postUsuarios(
-          firstName,
-          lastName,
-          userName,
-          email,
-          pwd
-        );
-        console.log(resp);
-        res.status(201).json(resp);
+        res
+          .status(201)
+          .json(await postUsuarios(firstName, lastName, userName, email, pwd));
       } catch (error: any) {
         res.status(500).json({ error: error.message });
       }

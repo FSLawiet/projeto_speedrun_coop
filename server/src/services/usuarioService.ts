@@ -62,7 +62,7 @@ export const usuarioLogin = async (
       userId: user.id,
       userUsername: user.userName,
     },
-    process.env.SESSION_SECRET,
+    process.env.SESSION_SECRET || "SECRET",
     { expiresIn: time_limit ? `${30 * 24}h` : "24h" }
   );
 

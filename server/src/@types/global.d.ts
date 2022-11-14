@@ -6,6 +6,8 @@ namespace NodeJS {
     DB_HOST: string;
     DB_PORT: number;
     DB_DATABASE: string;
+    DB_URL: string;
     SESSION_SECRET: string;
   }
 }
+export {};

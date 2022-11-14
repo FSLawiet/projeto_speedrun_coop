@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { HttpStatusCode } from "axios";
+import https from "https";
 import { FieldValues } from "react-hook-form";
 import { User } from "../../@types/User";
 import { RootState } from "../../store/Store";
@@ -22,7 +23,7 @@ export const registerUser = createAsyncThunk(
       };
       // make request to backend
       await axios.post(
-        "http://localhost:3000/users",
+        "https://speedrun-coop.onrender.com/users",
         { firstName, lastName, userName, email, pwd },
         config
       );
@@ -48,7 +49,7 @@ export const userLogin = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        "http://localhost:3000/login",
+        "https://speedrun-coop.onrender.com/login",
         { email, password, time_limit },
         config
       );
@@ -82,7 +83,7 @@ export const getUserDetails = createAsyncThunk<
         },
       };
       const { data } = await axios.get(
-        `http://localhost:3000/users/${user.userInfo.id}`,
+        `https://speedrun-coop.onrender.com/users/${user.userInfo.id}`,
         config
       );
       return data;

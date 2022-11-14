@@ -11,7 +11,10 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     token = req.headers.authorization.split(" ")[1];
 
     //check if the token matches the supposed origin
-    const decodedToken = jwt.verify(token, process.env.SESSION_SECRET);
+    const decodedToken = jwt.verify(
+      token,
+      process.env.SESSION_SECRET || "SECRET"
+    );
     // retrieve the user details of the logged in user
     const user = await decodedToken;
     // pass the user down to the endpoints here

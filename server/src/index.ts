@@ -1,16 +1,15 @@
-import express, { Express, Request, Response } from "express";
+import * as dotenv from "dotenv";
+dotenv.config({ path: __dirname + "/../.env", debug: true });
+
+import express, { Express, Request, Response, NextFunction } from "express";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { usuarioRoute } from "./routes/usuarioRoute";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const server: Express = express();
-const port = process.env.PORT;
-
+const port = process.env.PORT || 4000;
 server.use(express.json());
-server.use((req: Request, res: Response, next) => {
+server.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
